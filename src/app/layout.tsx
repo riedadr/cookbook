@@ -12,7 +12,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="de">
+		<html lang="de" data-theme="dark">
 			<body className="flex flex-col">
 				<Shell>{children}</Shell>
 			</body>
