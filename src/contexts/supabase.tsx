@@ -12,7 +12,6 @@ import {
 	useContext,
 } from "react";
 import { useRouter } from "next/navigation";
-import { Database } from "@/types/supabase";
 
 type TSupabaseContext = {
 	supabase: SupabaseClient;
@@ -29,7 +28,7 @@ export default function SupabaseProvider({
 	children: ReactNode;
 }) {
 	const router = useRouter();
-	const [supabase] = useState(() => createBrowserSupabaseClient<Database>());
+	const [supabase] = useState(() => createBrowserSupabaseClient());
 	const [session, setSession] = useState<Session | null>(null);
 
 
@@ -52,8 +51,6 @@ export default function SupabaseProvider({
 	useEffect(() => {
 		async function getSession() {
 			const { data, error } = await supabase.auth.getSession();
-			console.log(data);
-
 			return !error && data ? data.session : null;
 		}
 

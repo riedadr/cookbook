@@ -1,13 +1,16 @@
 import { headers, cookies } from "next/headers";
-import { Database } from "@/types/supabase";
 import { createServerComponentSupabaseClient } from "@supabase/auth-helpers-nextjs";
+import { TRecipe } from "@/types/supabase";
+
+
 
 export default async function RecipesList() {
-	const supabase = createServerComponentSupabaseClient<Database>({
+	const supabase = createServerComponentSupabaseClient({
 		headers,
 		cookies,
 	});
-	const { data: recipes } = await supabase.from("recipes").select();
+	const { data : recipes} = await supabase.from("recipes").select() as unknown as {data: TRecipe[]};
+
 	return (
 		<>
 			<h1>Rezepte</h1>
