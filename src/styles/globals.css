@@ -4,7 +4,7 @@
 
 
 .min-h-section {
-	min-height: calc(100vh - 64.67px -  1rem);
+	min-height: calc(100vh - 64.67px - 1rem);
 	/* 100vh - header - main.padding*/
 }
 .min-h-section:last-child {

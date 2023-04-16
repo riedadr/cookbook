@@ -40,7 +40,7 @@ function LoggedInMenu({ action }: { action: VoidFunction }) {
 				<span>Meine Rezepte</span>
 			</li>
 			<li>
-				<button className="text-error" onClick={action}>
+				<button className="bnt btn-error btn-outline" onClick={action}>
 					abmelden
 				</button>
 			</li>

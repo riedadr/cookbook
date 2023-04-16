@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
 	createBrowserSupabaseClient,
 	type Session,
@@ -31,15 +31,11 @@ export default function SupabaseProvider({
 	const [supabase] = useState(() => createBrowserSupabaseClient());
 	const [session, setSession] = useState<Session | null>(null);
 
-
 	const signIn = () => {
 		supabase.auth.signInWithOAuth({
 			provider: "google",
 			options: {
-				redirectTo:
-					process.env.NODE_ENV === "development"
-						? "http://localhost:3000"
-						: "https://cook.riedadr.dev",
+				redirectTo: window.location.origin,
 			},
 		});
 	};
@@ -61,7 +57,7 @@ export default function SupabaseProvider({
 		const {
 			data: { subscription },
 		} = supabase.auth.onAuthStateChange((e, s) => {
-			setSession(s)
+			setSession(s);
 			router.push("/");
 		});
 
