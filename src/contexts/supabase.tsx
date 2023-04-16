@@ -1,6 +1,7 @@
 "use client"
 import {
 	createBrowserSupabaseClient,
+	type Session,
 	type SupabaseClient,
 } from "@supabase/auth-helpers-nextjs";
 import {
@@ -15,6 +16,9 @@ import { Database } from "@/types/supabase";
 
 type TSupabaseContext = {
 	supabase: SupabaseClient;
+	session: Session | null;
+	signIn: VoidFunction;
+	signOut: VoidFunction;
 };
 
 const Context = createContext<TSupabaseContext | undefined>(undefined);
@@ -26,18 +30,8 @@ export default function SupabaseProvider({
 }) {
 	const router = useRouter();
 	const [supabase] = useState(() => createBrowserSupabaseClient<Database>());
+	const [session, setSession] = useState<Session | null>(null);
 
-	useEffect(() => {
-		const {
-			data: { subscription },
-		} = supabase.auth.onAuthStateChange(() => {
-			router.refresh();
-		});
-
-		return () => {
-			subscription.unsubscribe();
-		};
-	}, [supabase, router]);
 
 	const signIn = () => {
 		supabase.auth.signInWithOAuth({
@@ -50,12 +44,37 @@ export default function SupabaseProvider({
 			},
 		});
 	};
+
 	const signOut = () => {
 		supabase.auth.signOut();
 	};
 
+	useEffect(() => {
+		async function getSession() {
+			const { data, error } = await supabase.auth.getSession();
+			console.log(data);
+
+			return !error && data ? data.session : null;
+		}
+
+		getSession().then((s) => setSession(s));
+	}, [supabase]);
+
+	useEffect(() => {
+		const {
+			data: { subscription },
+		} = supabase.auth.onAuthStateChange((e, s) => {
+			setSession(s)
+			router.push("/");
+		});
+
+		return () => {
+			subscription.unsubscribe();
+		};
+	}, [supabase, router]);
+
 	return (
-		<Context.Provider value={{ supabase }}>
+		<Context.Provider value={{ supabase, session, signIn, signOut }}>
 			<>{children}</>
 		</Context.Provider>
 	);
