@@ -56,7 +56,7 @@ export default function SupabaseProvider({
 	useEffect(() => {
 		const {
 			data: { subscription },
-		} = supabase.auth.onAuthStateChange((e, s) => {
+		} = supabase.auth.onAuthStateChange((e, s) => {	
 			setSession(s);
 			router.push("/");
 		});

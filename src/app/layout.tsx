@@ -1,5 +1,5 @@
 import Shell from "@/components/navigation/Shell";
-import SupabaseProvider from "@/contexts/supabase";
+import SupabaseProvider from "@/contexts/supabaseCtx";
 import "@/styles/globals.css";
 
 export const metadata = {

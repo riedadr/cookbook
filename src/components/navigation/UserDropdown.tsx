@@ -1,4 +1,4 @@
-import { useSupabase } from "@/contexts/supabase";
+import { useSupabase } from "@/contexts/supabaseCtx";
 import { IconUser } from "@tabler/icons-react";
 import Image from "next/image";
 
