@@ -1,20 +1,14 @@
 import Shell from "@/components/navigation/Shell";
+import SupabaseProvider from "@/contexts/supabase";
 import "@/styles/globals.css";
 
-export const metadata = {
-	title: "CookBook",
-	description: "Kochbuch",
-};
-
-export default function RootLayout({
-	children,
-}: {
-	children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="de" data-theme="dark">
 			<body className="flex flex-col">
-				<Shell>{children}</Shell>
+				<SupabaseProvider>
+					<Shell>{children}</Shell>
+				</SupabaseProvider>
 			</body>
 		</html>
 	);

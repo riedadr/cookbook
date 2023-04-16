@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.min-h-section {
+	min-height: calc(100vh - 64.67px -  1rem);
+	/* 100vh - header - main.padding*/
+}
+.min-h-section:last-child {
+	min-height: calc(100vh - 64.67px - 2 * 1rem);
+	/* 100vh - header - main.padding*/
+}
