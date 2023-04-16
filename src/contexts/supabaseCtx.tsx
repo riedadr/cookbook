@@ -33,7 +33,7 @@ export default function SupabaseProvider({
 
 	const signIn = () => {
 		supabase.auth.signInWithOAuth({
-			provider: "google",
+			provider: "github",
 			options: {
 				redirectTo: window.location.origin,
 			},
