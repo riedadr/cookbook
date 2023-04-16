@@ -42,6 +42,7 @@ export default function SupabaseProvider({
 
 	const signOut = () => {
 		supabase.auth.signOut();
+		router.push("/")
 	};
 
 	useEffect(() => {
@@ -58,7 +59,7 @@ export default function SupabaseProvider({
 			data: { subscription },
 		} = supabase.auth.onAuthStateChange((e, s) => {	
 			setSession(s);
-			router.push("/");
+			router.refresh();
 		});
 
 		return () => {

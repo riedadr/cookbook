@@ -60,7 +60,7 @@ function Shell({ children }: { children: ReactNode }) {
 
 function Logo() {
 	return (
-		<div className="flex gap-2 items-center">
+		<div className="flex gap-2 items-center text-primary">
 			<IconToolsKitchen2 />
 			<span className="uppercase font-semibold text-2xl">CookBook</span>
 		</div>

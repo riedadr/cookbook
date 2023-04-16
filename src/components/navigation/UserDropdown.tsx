@@ -1,6 +1,7 @@
 import { useSupabase } from "@/contexts/supabaseCtx";
 import { IconUser } from "@tabler/icons-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function UserDropdown() {
 	const { session, signIn, signOut } = useSupabase();
@@ -38,6 +39,9 @@ function LoggedInMenu({ action }: { action: VoidFunction }) {
 		>
 			<li>
 				<span>Meine Rezepte</span>
+			</li>
+			<li>
+				<Link href="/settings/account">Mein Profil</Link>
 			</li>
 			<li>
 				<button className="bnt btn-error btn-outline" onClick={action}>
