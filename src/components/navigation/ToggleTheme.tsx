@@ -4,8 +4,13 @@ import { themeChange } from "theme-change";
 import { IconMoon, IconSun } from "@tabler/icons-react";
 
 function ToggleTheme() {
-	const [theme, setTheme] = useState((typeof window !== "undefined") ? localStorage.getItem("theme") : "dark");
+	const [theme, setTheme] = useState("dark");
 	useEffect(() => {
+		if (typeof window !== "undefined") {
+			const clientTheme = localStorage.getItem("theme");
+			if (clientTheme) setTheme(clientTheme);
+		}
+
 		themeChange(false);
 	}, []);
 	return (
