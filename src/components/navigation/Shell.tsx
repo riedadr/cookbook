@@ -62,7 +62,7 @@ function Logo() {
 	return (
 		<div className="flex gap-2 items-center">
 			<IconToolsKitchen2 />
-			<span className="uppercase font-semibold text-2xl">Kochbuch</span>
+			<span className="uppercase font-semibold text-2xl">CookBook</span>
 		</div>
 	);
 }
