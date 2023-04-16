@@ -12,7 +12,7 @@ export default function UserDropdown() {
 				<div className="rounded-full">
 					{session ? (
 						<Image
-							src="https://github.com/riedadr.png"
+							src={session.user.user_metadata.avatar_url}
 							alt="profile"
 							height={32}
 							width={32}
