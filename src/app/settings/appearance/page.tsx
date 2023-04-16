@@ -1,5 +1,5 @@
 export default function AppearancePage() {
 	return (
-		<h1>Darstellung</h1>
+		<h1>Inhalt...</h1>
 	)
 }

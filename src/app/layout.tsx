@@ -1,10 +1,11 @@
 import Shell from "@/components/navigation/Shell";
 import SupabaseProvider from "@/contexts/supabaseCtx";
+import ThemeProvider from "@/contexts/themeCtx";
 import "@/styles/globals.css";
 
 export const metadata = {
 	title: "CookBook",
-	description: "Kochbuch"
+	description: "Kochbuch",
 };
 
 export default function RootLayout({
@@ -48,7 +49,9 @@ export default function RootLayout({
 			</head>
 			<body className="flex flex-col">
 				<SupabaseProvider>
-					<Shell>{children}</Shell>
+					<ThemeProvider>
+						<Shell>{children}</Shell>
+					</ThemeProvider>
 				</SupabaseProvider>
 			</body>
 		</html>

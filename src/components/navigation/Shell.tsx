@@ -1,7 +1,15 @@
 "use client";
 import Link from "next/link";
 import { type ReactNode } from "react";
-import { IconToolsKitchen2, IconPlus } from "@tabler/icons-react";
+import {
+	IconToolsKitchen2,
+	IconPlus,
+	IconPalette,
+	IconUserCog,
+	IconHome,
+	IconSearch,
+	IconBook,
+} from "@tabler/icons-react";
 import ToggleTheme from "./ToggleTheme";
 import UserDropdown from "./UserDropdown";
 
@@ -22,7 +30,9 @@ function Shell({ children }: { children: ReactNode }) {
 								</label>
 							</div>
 							<div className="flex-none hidden lg:block px-2">
-								<Logo />
+								<Link href="/">
+									<Logo />
+								</Link>
 							</div>
 							<div>
 								<div className="flex-none hidden lg:flex px-2 gap-2">
@@ -46,12 +56,30 @@ function Shell({ children }: { children: ReactNode }) {
 			<div className="drawer-side">
 				<label htmlFor="my-drawer-3" className="drawer-overlay"></label>
 				<ul className="menu p-4 w-80 bg-base-100">
-					<li>
-						<a>Sidebar Item 1</a>
-					</li>
-					<li>
-						<a>Sidebar Item 2</a>
-					</li>
+					<NavLink icon={<IconHome />} href="/">
+						Start
+					</NavLink>
+					<div className="flex gap-2 items-center mb-2 mt-4">
+						Rezepte <hr className="w-full border-neutral" />
+					</div>
+					<NavLink icon={<IconSearch />} href="/recipes/search">
+						Suche
+					</NavLink>
+					<NavLink icon={<IconPlus />} href="/recipes/new">
+						Erstellen
+					</NavLink>
+					<NavLink icon={<IconBook />} href="/recipes/my">
+						Meine Rezepte
+					</NavLink>
+					<div className="flex gap-2 items-center mb-2 mt-4">
+						Einstellungen <hr className="w-full border-neutral" />
+					</div>
+					<NavLink icon={<IconUserCog />} href="/settings/profile">
+						Profil
+					</NavLink>
+					<NavLink icon={<IconPalette />} href="/settings/appearance">
+						Darstellung
+					</NavLink>
 				</ul>
 			</div>
 		</div>
@@ -60,10 +88,34 @@ function Shell({ children }: { children: ReactNode }) {
 
 function Logo() {
 	return (
-		<div className="flex gap-2 items-center text-primary">
+		<div className="flex gap-2 items-center">
 			<IconToolsKitchen2 />
-			<span className="uppercase font-semibold text-2xl">CookBook</span>
+			<div className="uppercase font-semibold text-2xl">
+				CookBook
+				<sup className="text-primary lowercase font-light">alpha</sup>
+			</div>
 		</div>
+	);
+}
+
+function NavLink({
+	href,
+	icon,
+	children,
+}: {
+	href: string;
+	icon?: ReactNode;
+	children: ReactNode;
+}) {
+	return (
+		<li>
+			<Link href={href}>
+				<div className="flex gap-4">
+					{icon}
+					{children}
+				</div>
+			</Link>
+		</li>
 	);
 }
 

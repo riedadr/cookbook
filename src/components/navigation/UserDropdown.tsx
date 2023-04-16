@@ -6,7 +6,6 @@ import Link from "next/link";
 export default function UserDropdown() {
 	const { session, signIn, signOut } = useSupabase();
 
-
 	return (
 		<div className="dropdown dropdown-end">
 			<label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -38,10 +37,10 @@ function LoggedInMenu({ action }: { action: VoidFunction }) {
 			className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
 		>
 			<li>
-				<span>Meine Rezepte</span>
+				<Link href="/settings/profile">Mein Profil</Link>
 			</li>
 			<li>
-				<Link href="/settings/account">Mein Profil</Link>
+				<Link href="/recipes/my">Meine Rezepte</Link>
 			</li>
 			<li>
 				<button className="bnt btn-error btn-outline" onClick={action}>
