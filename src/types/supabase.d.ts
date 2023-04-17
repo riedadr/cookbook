@@ -7,3 +7,11 @@ export type TRecipe = {
 	title: string;
 	updated_at: string;
 };
+
+export type TProfile = {
+	profile_id: string;
+	created_at: string;
+	email: string;
+	avatar: string;
+	name: string;
+};
