@@ -18,7 +18,7 @@ export default function SettingsBreadcrumbs() {
 					{currentPage && <li>{currentPage?.name}</li>}
 				</ul>
 			</div>
-			{currentPage && <h1 className="mt-4 text-xl font-bold">{currentPage?.name}</h1>}
+			{currentPage && <h1 className="mt-2 text-2xl font-bold">{currentPage?.name}</h1>}
 		</>
 	);
 }

@@ -56,8 +56,11 @@ export default function ProfileForm({ profile }: { profile: TProfile }) {
 	}
 
 	return (
-		<>
-			<div className="flex gap-4 mt-8">
+		<div className="mt-8">
+			<div className="flex justify-between items-baseline">
+				<span className="text-lg font-bold">{profile.email}</span><span className="text-sm">registriert am {registrationDateString}</span>
+			</div>
+			<div className="flex gap-4 mt-4">
 				<div>
 					<Link
 						className="avatar pt-2"
@@ -126,7 +129,7 @@ export default function ProfileForm({ profile }: { profile: TProfile }) {
 					error={changeMsgProps.error}
 				/>
 			</div>
-		</>
+		</div>
 	);
 }
 
