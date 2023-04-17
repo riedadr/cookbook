@@ -14,7 +14,7 @@ export default function SettingsLayout({
 	return (
 		<div className="flex items-start gap-8">
 			<SettingsNav />
-			<section className="w-full">
+			<section className="w-full lg:ml-80">
 				<SettingsBreadcrumbs />
 				{children}
 			</section>
