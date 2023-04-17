@@ -9,6 +9,7 @@ import {
 	IconHome,
 	IconSearch,
 	IconBook,
+	IconSettings,
 } from "@tabler/icons-react";
 import ToggleTheme from "./ToggleTheme";
 import UserDropdown from "./UserDropdown";
@@ -42,6 +43,13 @@ function Shell({ children }: { children: ReactNode }) {
 										title="neues Rezept"
 									>
 										<IconPlus />
+									</Link>
+									<Link
+										className="btn btn-ghost btn-circle"
+										href="/settings"
+										title="neues Rezept"
+									>
+										<IconSettings />
 									</Link>
 									<ToggleTheme />
 								</div>

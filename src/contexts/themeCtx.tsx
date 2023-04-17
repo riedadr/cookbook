@@ -5,11 +5,14 @@ import {
 	useState,
 	useEffect,
 	useContext,
+	Dispatch,
+	SetStateAction,
 } from "react";
 import { themeChange } from "theme-change";
 
 type TThemeContext = {
 	theme: "dark" | "light";
+	changeTheme: (newTheme: "dark" | "light") => void;
 	toggleTheme: VoidFunction;
 };
 
@@ -24,22 +27,28 @@ export default function ThemeProvider({
 	const [theme, setTheme] = useState<TThemeContext["theme"]>("dark");
 
 	const toggleTheme = () => {
-		if (theme === "dark") setTheme("light")
-		else setTheme("dark")
+		const newTheme = (theme === "dark") ? "light" : "dark";
+		changeTheme(newTheme)
+	};
+
+	const changeTheme = (newTheme: "dark" | "light") => {
+		document.body.setAttribute("data-theme", newTheme)
+		localStorage.setItem("theme", newTheme)
+		setTheme(newTheme)
 	};
 
 
 	useEffect(() => {
 		if (typeof window !== "undefined") {
 			const clientTheme = localStorage.getItem("theme");
-			if (clientTheme) setTheme(clientTheme as TThemeContext["theme"]);
+			if (clientTheme) changeTheme(clientTheme as TThemeContext["theme"]);
 		}
 
-		themeChange(false);
+		
 	}, []);
 
 	return (
-		<Context.Provider value={{ theme, toggleTheme }}>
+		<Context.Provider value={{ theme, toggleTheme, changeTheme }}>
 			<>{children}</>
 		</Context.Provider>
 	);

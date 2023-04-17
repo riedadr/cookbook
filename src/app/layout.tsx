@@ -14,7 +14,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="de" data-theme="dark">
+		<html lang="de">
 			<head>
 				<link
 					rel="apple-touch-icon"
@@ -47,7 +47,7 @@ export default function RootLayout({
 				/>
 				<meta name="theme-color" content="#1f2937" />
 			</head>
-			<body className="flex flex-col">
+			<body className="flex flex-col" data-theme="dark">
 				<SupabaseProvider>
 					<ThemeProvider>
 						<Shell>{children}</Shell>

@@ -1,19 +1,32 @@
 "use client";
+import { useEffect, useState } from "react";
+import { themeChange } from "theme-change";
 import { IconMoon, IconSun } from "@tabler/icons-react";
 import { useTheme } from "@/contexts/themeCtx";
 
 function ToggleTheme() {
-	const {theme, toggleTheme } = useTheme()
+	const { theme, changeTheme } = useTheme();
 	return (
 		<>
-			<button
-				data-set-theme={theme === "dark" ? "light" : "dark"}
-				className="btn btn-circle btn-ghost"
-				title="Theme wechseln"
-				onClick={() => toggleTheme()}
-			>
-				{theme === "dark" ? <IconSun /> : <IconMoon />}
-			</button>
+			{theme === "light" ? (
+				<button
+					data-set-theme="dark"
+					className="btn btn-circle btn-ghost"
+					title="dunkles Theme"
+					onClick={() => changeTheme("dark")}
+				>
+					<IconMoon />
+				</button>
+			) : (
+				<button
+					data-set-theme="light"
+					className="btn btn-circle btn-ghost"
+					title="helles Theme"
+					onClick={() => changeTheme("light")}
+				>
+					<IconSun />
+				</button>
+			)}
 		</>
 	);
 }
