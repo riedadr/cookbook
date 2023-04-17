@@ -9,7 +9,7 @@ export default function SettingsNav() {
 		<aside
 			className={`${
 				path === "/settings" ? "hidden" : "hidden lg:block fixed"
-			} w-80`}
+			} w-64`}
 		>
 			<SettingsNavLinks />
 		</aside>

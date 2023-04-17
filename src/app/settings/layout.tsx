@@ -1,6 +1,5 @@
 import SettingsBreadcrumbs from "@/components/settings/SettingsBreadcrumbs";
 import SettingsNav from "@/components/settings/SettingsNav";
-import SettingsNavLinks from "@/components/settings/SettingsNavLinks";
 export const metadata = {
 	title: "CookBook - Settings",
 	description: "Einstellungen",
@@ -14,7 +13,7 @@ export default function SettingsLayout({
 	return (
 		<div className="flex items-start gap-8">
 			<SettingsNav />
-			<section className="w-full lg:ml-80">
+			<section className="w-full lg:ml-64 lg:pl-8">
 				<SettingsBreadcrumbs />
 				{children}
 			</section>
