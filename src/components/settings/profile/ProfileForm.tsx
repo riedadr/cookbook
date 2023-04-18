@@ -56,80 +56,85 @@ export default function ProfileForm({ profile }: { profile: TProfile }) {
 	}
 
 	return (
-		<div className="mt-8">
-			<div className="flex justify-between items-baseline">
-				<span className="text-lg font-bold">{profile.email}</span><span className="text-sm">registriert am {registrationDateString}</span>
-			</div>
-			<div className="flex gap-4 mt-4">
-				<div>
-					<Link
-						className="avatar pt-2"
-						href={avatarUrl}
-						target="_blank"
-					>
-						<div className="w-32 h-32 rounded-full">
-							<Image
-								src={avatarUrl}
-								width={128}
-								height={128}
-								alt="avatar"
-							/>
-						</div>
-					</Link>
+		<>
+			<form className="mt-8" onSubmit={handleSubmit}>
+				<div className="flex justify-between items-baseline">
+					<span className="text-lg font-bold">{profile.email}</span>
+					<span className="text-sm">
+						registriert am {registrationDateString}
+					</span>
 				</div>
-				<form className="w-full" onSubmit={handleSubmit}>
-					<div className="form-control w-full">
-						<label className="label">
-							<span className="label-text">Name</span>
-						</label>
-						<input
-							name="name"
-							value={updatedProfile.name}
-							onChange={handleInput}
-							title="Erlaubte Zeichen: Buchstaben, Zahlen"
-							type="text"
-							placeholder="Anzeigename"
-							className="input input-bordered w-full"
-							pattern="[A-Za-z0-9]+(\s[A-Za-z0-9]+)*"
-						/>
-						<label className="label">
-							<span className="label-text">Profilbild</span>
-						</label>
-						<div className="flex gap-4">
+				<div className="flex gap-4 mt-4 items-end">
+					<div>
+						<Link
+							className="avatar pt-2"
+							href={avatarUrl}
+							target="_blank"
+						>
+							<div className="w-32 h-32 rounded-full">
+								<Image
+									src={avatarUrl}
+									width={128}
+									height={128}
+									alt="avatar"
+								/>
+							</div>
+						</Link>
+					</div>
+					<div className="w-full">
+						<div className="form-control w-full">
+							<label className="label">
+								<span className="label-text">Name</span>
+							</label>
 							<input
-								name="avatar"
-								value={updatedProfile.avatar}
+								name="name"
+								value={updatedProfile.name}
 								onChange={handleInput}
-								type="url"
-								placeholder="Profilbild-URL"
+								title="Erlaubte Zeichen: Buchstaben, Zahlen"
+								type="text"
+								placeholder="Anzeigename"
 								className="input input-bordered w-full"
+								pattern="[A-Za-z0-9]+(\s[A-Za-z0-9]+)*"
 							/>
-							<button
-								type="button"
-								className="btn"
-								onClick={() =>
-									setAvatarUrl(updatedProfile.avatar)
-								}
-							>
-								<IconEye />
-							</button>
+							<label className="label">
+								<span className="label-text">Profilbild</span>
+							</label>
+							<div className="flex gap-4">
+								<input
+									name="avatar"
+									value={updatedProfile.avatar}
+									onChange={handleInput}
+									type="url"
+									placeholder="Profilbild-URL"
+									className="input input-bordered w-full"
+								/>
+								<button
+									type="button"
+									className="btn"
+									onClick={() =>
+										setAvatarUrl(updatedProfile.avatar)
+									}
+								>
+									<IconEye />
+								</button>
+							</div>
 						</div>
 					</div>
-					<div className="mt-8 w-full flex justify-end">
-						<button
-							className="btn btn-primary flex gap-2"
-							type="submit"
-						>
-							<IconDeviceFloppy /> speichern
-						</button>
-					</div>
-				</form>
-				<ChangeMsg
-					visible={changeMsgProps.visible}
-					error={changeMsgProps.error}
-				/>
-			</div>
-		</div>
+				</div>
+				<div className="mt-8 w-full flex justify-end">
+					<button
+						className="btn btn-primary flex gap-2"
+						type="submit"
+					>
+						<IconDeviceFloppy /> speichern
+					</button>
+				</div>
+			</form>
+			<ChangeMsg
+				visible={changeMsgProps.visible}
+				error={changeMsgProps.error}
+			/>
+		</>
 	);
 }
 
