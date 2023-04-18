@@ -10,6 +10,8 @@ import {
 	useState,
 	useEffect,
 	useContext,
+	type SetStateAction,
+	type Dispatch,
 } from "react";
 import { useRouter } from "next/navigation";
 import { TProfile } from "@/types/supabase";
@@ -20,6 +22,7 @@ type TSupabaseContext = {
 	signIn: VoidFunction;
 	signOut: VoidFunction;
 	profile: TProfile | null;
+	setProfile: Dispatch<SetStateAction<TProfile | null>>;
 	updateProfile: Function;
 };
 
@@ -104,7 +107,7 @@ export default function SupabaseProvider({
 
 	return (
 		<Context.Provider
-			value={{ supabase, session, signIn, signOut, profile, updateProfile }}
+			value={{ supabase, session, signIn, signOut, profile, setProfile, updateProfile }}
 		>
 			<>{children}</>
 		</Context.Provider>
