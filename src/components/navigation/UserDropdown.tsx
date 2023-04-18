@@ -4,15 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function UserDropdown() {
-	const { session, signIn, signOut } = useSupabase();
+	const { session, signIn, signOut, profile } = useSupabase();	
 
 	return (
 		<div className="dropdown dropdown-end">
 			<label tabIndex={0} className="btn btn-ghost btn-circle avatar">
 				<div className="rounded-full">
-					{session ? (
+					{session && profile ? (
 						<Image
-							src={session.user.user_metadata.avatar_url}
+							src={profile.avatar}
 							alt="profile"
 							height={32}
 							width={32}

@@ -2,14 +2,16 @@
 import Link from "next/link";
 import { settingPages } from "./settingPages";
 import { usePathname } from "next/navigation";
+import { useSupabase } from "@/contexts/supabaseCtx";
 
-export default function SettingsNavLinks({ unauthed }: { unauthed: boolean }) {
+export default function SettingsNavLinks() {
 	const path = usePathname();
+	const { session } = useSupabase()
 
 	return (
 		<ul className={`menu w-full rounded-box`}>
 			{settingPages.map((page) => {
-				const disabled = page.protected && unauthed
+				const disabled = page.protected && !session
 				return (
 					<li key={page.name} className={disabled ? "hidden" : ""}>
 						<Link

@@ -5,10 +5,7 @@ import {
 	useState,
 	useEffect,
 	useContext,
-	Dispatch,
-	SetStateAction,
 } from "react";
-import { themeChange } from "theme-change";
 
 type TThemeContext = {
 	theme: "dark" | "light";

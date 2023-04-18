@@ -14,7 +14,7 @@ import Link from "next/link";
 import { type FormEvent, useState, type ChangeEvent } from "react";
 
 export default function ProfileForm({ profile }: { profile: TProfile }) {
-	const { supabase } = useSupabase();
+	const { supabase, updateProfile } = useSupabase();
 	const [updatedProfile, setUpdatedProfile] = useState(profile);
 	const [avatarUrl, setAvatarUrl] = useState(profile.avatar);
 	const [changeMsgProps, setChangeMsgProps] = useState<{
@@ -44,6 +44,7 @@ export default function ProfileForm({ profile }: { profile: TProfile }) {
 				name: updatedProfile.name,
 			})
 			.eq("profile_id", profile.profile_id);
+		if (!error) updateProfile();
 		showChangeMsg(error);
 	};
 
@@ -125,6 +126,7 @@ export default function ProfileForm({ profile }: { profile: TProfile }) {
 					<button
 						className="btn btn-primary flex gap-2"
 						type="submit"
+						disabled={profile == updatedProfile}
 					>
 						<IconDeviceFloppy /> speichern
 					</button>
@@ -147,7 +149,7 @@ function ChangeMsg({
 }) {
 	return (
 		<div className={visible ? "toast" : "hidden"}>
-			<div className={`alert ${error ? "alert-error" : "alert-info"}`}>
+			<div className={`alert ${error ? "alert-error" : "alert-success"}`}>
 				<div className="flex gap-4">
 					{error ? <IconExclamationCircle /> : <IconCheck />}
 					<span>

@@ -12,12 +12,15 @@ import {
 	useContext,
 } from "react";
 import { useRouter } from "next/navigation";
+import { TProfile } from "@/types/supabase";
 
 type TSupabaseContext = {
 	supabase: SupabaseClient;
 	session: Session | null;
 	signIn: VoidFunction;
 	signOut: VoidFunction;
+	profile: TProfile | null;
+	updateProfile: Function;
 };
 
 const Context = createContext<TSupabaseContext | undefined>(undefined);
@@ -30,6 +33,7 @@ export default function SupabaseProvider({
 	const router = useRouter();
 	const [supabase] = useState(() => createBrowserSupabaseClient());
 	const [session, setSession] = useState<Session | null>(null);
+	const [profile, setProfile] = useState<TProfile | null>(null);
 
 	const signIn = () => {
 		supabase.auth.signInWithOAuth({
@@ -42,7 +46,23 @@ export default function SupabaseProvider({
 
 	const signOut = () => {
 		supabase.auth.signOut();
-		router.push("/")
+		router.push("/");
+	};
+
+	const updateProfile = async () => {
+		if (session) {
+			const pid = session.user.id;
+			const { data, error } = await supabase
+				.from("profiles")
+				.select()
+				.eq("profile_id", pid);
+			let p = null;
+			if (!error && data) {
+				p = data.at(0) as TProfile;
+				setProfile(p);
+			}
+			return p;
+		} else return null;
 	};
 
 	useEffect(() => {
@@ -50,14 +70,29 @@ export default function SupabaseProvider({
 			const { data, error } = await supabase.auth.getSession();
 			return !error && data ? data.session : null;
 		}
+		async function getProfile(pid: string) {
+			const { data, error } = await supabase
+				.from("profiles")
+				.select()
+				.eq("profile_id", pid);
+			let p = null;
+			if (!error && data) {
+				p = data.at(0) as TProfile;
+				setProfile(p);
+			}
+			return p;
+		}
 
-		getSession().then((s) => setSession(s));
+		getSession().then((s) => {
+			if (s) getProfile(s.user.id).then((p) => setProfile(p));
+			setSession(s);
+		});
 	}, [supabase]);
 
 	useEffect(() => {
 		const {
 			data: { subscription },
-		} = supabase.auth.onAuthStateChange((e, s) => {	
+		} = supabase.auth.onAuthStateChange((e, s) => {
 			setSession(s);
 			router.refresh();
 		});
@@ -68,7 +103,9 @@ export default function SupabaseProvider({
 	}, [supabase, router]);
 
 	return (
-		<Context.Provider value={{ supabase, session, signIn, signOut }}>
+		<Context.Provider
+			value={{ supabase, session, signIn, signOut, profile, updateProfile }}
+		>
 			<>{children}</>
 		</Context.Provider>
 	);
