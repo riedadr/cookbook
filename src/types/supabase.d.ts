@@ -1,3 +1,5 @@
+import { Url } from "url";
+
 export type TRecipe = {
 	author: string | null;
 	content: string;
@@ -14,4 +16,27 @@ export type TProfile = {
 	email: string;
 	avatar: string;
 	name: string;
+};
+
+export type TJwt = {
+	aud: "authenticated";
+	exp: number;
+	sub: string;
+	email: `${string}@${string}.${string}`;
+	phone: "";
+	app_metadata: { provider: "github"; providers: ["github"] };
+	user_metadata: {
+		avatar_url: Url;
+		email: `${string}@${string}.${string}`;
+		email_verified: boolean;
+		iss: Url;
+		preferred_username: string;
+		provider_id: string;
+		sub: string;
+		user_name: string;
+	};
+	role: "authenticated";
+	aal: "aal1";
+	amr: [{ method: "oauth"; timestamp: number }];
+	session_id: string;
 };
