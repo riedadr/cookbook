@@ -25,7 +25,10 @@ export default function ThemeProvider({ children }: { children: ReactNode }) {
 
 	const changeTheme = (newTheme: "dark" | "light") => {
 		document.body.setAttribute("data-theme", newTheme);
-		document.body.className = newTheme;
+		
+		if (newTheme === "dark") document.body.classList.add("dark");
+		else document.body.classList.remove("dark");
+		
 		localStorage.setItem("theme", newTheme);
 		setTheme(newTheme);
 	};
