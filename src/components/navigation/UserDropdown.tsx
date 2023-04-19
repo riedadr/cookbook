@@ -1,14 +1,18 @@
 import { useSupabase } from "@/contexts/supabaseCtx";
-import { IconUser } from "@tabler/icons-react";
+import { IconBook, IconPlus, IconUser, IconUserCog } from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";
+import NavLink from "./NavLink";
 
 export default function UserDropdown() {
-	const { session, signIn, signOut, profile } = useSupabase();	
+	const { session, signIn, signOut, profile } = useSupabase();
 
 	return (
 		<div className="dropdown dropdown-end">
-			<label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+			<label
+				tabIndex={0}
+				className="btn btn-ghost h-16 w-16 rounded-none avatar "
+			>
 				<div className="rounded-full">
 					{session && profile ? (
 						<Image
@@ -37,13 +41,18 @@ function LoggedInMenu({ action }: { action: VoidFunction }) {
 			className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
 		>
 			<li>
-				<Link href="/settings/profile">Mein Profil</Link>
+				<NavLink icon={<IconUserCog />} href="/settings/profile">
+					Mein Profil
+				</NavLink>
 			</li>
 			<li>
-				<Link href="/recipes/my">Meine Rezepte</Link>
+				<NavLink icon={<IconBook />} href="/recipes/my">
+					Meine Rezepte
+				</NavLink>
 			</li>
+			<hr className="my-2"/>
 			<li>
-				<button className="bnt btn-error btn-outline" onClick={action}>
+				<button className="btn btn-error btn-outline btn-md" onClick={action}>
 					abmelden
 				</button>
 			</li>

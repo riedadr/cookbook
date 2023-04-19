@@ -7,12 +7,13 @@ import {
 	IconPalette,
 	IconUserCog,
 	IconHome,
-	IconSearch,
 	IconBook,
 	IconSettings,
+	IconSearch,
 } from "@tabler/icons-react";
 import ToggleTheme from "./ToggleTheme";
 import UserDropdown from "./UserDropdown";
+import NavLink from "./NavLink";
 
 function Shell({ children }: { children: ReactNode }) {
 	return (
@@ -21,7 +22,7 @@ function Shell({ children }: { children: ReactNode }) {
 			<div className="drawer-content flex flex-col">
 				<header className="bg-base-100 sticky top-0 z-40">
 					<div className=" max-w-7xl mx-auto">
-						<div className="w-full navbar items-center justify-between">
+						<div className="w-full navbar py-0 items-center justify-between">
 							<div className="flex-none lg:hidden">
 								<label
 									htmlFor="my-drawer-3"
@@ -36,22 +37,22 @@ function Shell({ children }: { children: ReactNode }) {
 								</Link>
 							</div>
 							<div>
-								<div className="flex-none hidden lg:flex px-2 gap-2">
+								<div className="flex-none hidden lg:flex">
 									<Link
-										className="btn btn-ghost btn-circle"
-										href="/recipes/new"
-										title="neues Rezept"
+										className="btn btn-ghost h-16 w-16 rounded-none"
+										href="/recipes"
+										title="alle Rezepte"
 									>
-										<IconPlus />
+										<IconSearch />
 									</Link>
+									<ToggleTheme />
 									<Link
-										className="btn btn-ghost btn-circle"
+										className="btn btn-ghost h-16 w-16 rounded-none"
 										href="/settings"
 										title="neues Rezept"
 									>
 										<IconSettings />
 									</Link>
-									<ToggleTheme />
 								</div>
 								<UserDropdown />
 							</div>
@@ -64,30 +65,30 @@ function Shell({ children }: { children: ReactNode }) {
 			<div className="drawer-side">
 				<label htmlFor="my-drawer-3" className="drawer-overlay"></label>
 				<ul className="menu p-4 w-80 bg-base-100">
-					<NavLink icon={<IconHome />} href="/">
+					<li><NavLink icon={<IconHome />} href="/">
 						Start
-					</NavLink>
+					</NavLink></li>
 					<div className="flex gap-2 items-center mb-2 mt-4">
 						Rezepte <hr className="w-full border-neutral" />
 					</div>
-					<NavLink icon={<IconSearch />} href="/recipes/search">
-						Suche
-					</NavLink>
-					<NavLink icon={<IconPlus />} href="/recipes/new">
-						Erstellen
-					</NavLink>
-					<NavLink icon={<IconBook />} href="/recipes/my">
+					<li><NavLink icon={<IconSearch />} href="/recipes">
+						Alle Rezepte
+					</NavLink></li>
+					<li><NavLink icon={<IconBook />} href="/recipes/my">
 						Meine Rezepte
-					</NavLink>
+					</NavLink></li>
+					<li><NavLink icon={<IconPlus />} href="/recipes/new">
+						Neues Rezept
+					</NavLink></li>
 					<div className="flex gap-2 items-center mb-2 mt-4">
 						Einstellungen <hr className="w-full border-neutral" />
 					</div>
-					<NavLink icon={<IconUserCog />} href="/settings/profile">
+					<li><NavLink icon={<IconUserCog />} href="/settings/profile">
 						Profil
-					</NavLink>
-					<NavLink icon={<IconPalette />} href="/settings/appearance">
+					</NavLink></li>
+					<li><NavLink icon={<IconPalette />} href="/settings/appearance">
 						Darstellung
-					</NavLink>
+					</NavLink></li>
 				</ul>
 			</div>
 		</div>
@@ -106,25 +107,6 @@ function Logo() {
 	);
 }
 
-function NavLink({
-	href,
-	icon,
-	children,
-}: {
-	href: string;
-	icon?: ReactNode;
-	children: ReactNode;
-}) {
-	return (
-		<li>
-			<Link href={href}>
-				<div className="flex gap-4">
-					{icon}
-					{children}
-				</div>
-			</Link>
-		</li>
-	);
-}
+
 
 export default Shell;
