@@ -6,16 +6,16 @@ async function RecipeCard({ recipe }: { recipe: TRecipe }) {
 		let color = "";
 		switch (recipe.course) {
 			case "Salat":
-				color = "bg-green-500 text-green-900";
+				color = "bg-green-500 text-green-900 dark:text-green-100";
 				break;
 			case "Vorspeise":
-				color = "bg-blue-500 text-blue-900";
+				color = "bg-blue-500 text-blue-900 dark:text-blue-100";
 				break;
 			case "Haupgericht":
-				color = "bg-amber-500 text-amber-900";
+				color = "bg-amber-500 text-amber-900 dark:text-amber-100";
 				break;
 			case "Süßspeise":
-				color = "bg-red-500 text-red-900";
+				color = "bg-red-500 text-red-900 dark:text-red-100";
 				break;
 		}
 		return color;
@@ -38,7 +38,7 @@ async function RecipeCard({ recipe }: { recipe: TRecipe }) {
 					<span>{recipe.title}</span>
 					{recipe.course && (
 						<div
-							className={`badge badge-sm bg-opacity-30 ${getBadgeColor()}`}
+							className={`badge badge-sm bg-opacity-30 border-none ${getBadgeColor()}`}
 						>
 							{recipe.course}
 						</div>
