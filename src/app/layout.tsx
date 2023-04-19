@@ -47,7 +47,7 @@ export default function RootLayout({
 				/>
 				<meta name="theme-color" content="#1f2937" />
 			</head>
-			<body className="flex flex-col" data-theme="dark">
+			<body className="flex flex-col dark" data-theme="dark">
 				<SupabaseProvider>
 					<ThemeProvider>
 						<Shell>{children}</Shell>
