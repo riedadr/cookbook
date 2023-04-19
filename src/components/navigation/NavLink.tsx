@@ -11,13 +11,13 @@ function NavLink({
 	children: ReactNode;
 }) {
 	return (
-			<Link href={href}>
-				<div className="flex gap-4">
-					{icon}
-					{children}
-				</div>
-			</Link>
+		<Link href={href}>
+			<div className="flex gap-4">
+				{icon}
+				{children}
+			</div>
+		</Link>
 	);
 }
 
-export default NavLink
+export default NavLink;

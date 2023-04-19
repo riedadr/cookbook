@@ -2,7 +2,7 @@ import SettingsNavLinks from "./SettingsNavLinks";
 
 export default function SettingsNav() {
 	return (
-		<aside className="hidden lg:block fixed w-64">
+		<aside className="fixed hidden w-64 lg:block">
 			<SettingsNavLinks />
 		</aside>
 	);

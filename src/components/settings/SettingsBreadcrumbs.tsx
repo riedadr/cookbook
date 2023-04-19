@@ -10,7 +10,7 @@ export default function SettingsBreadcrumbs() {
 
 	return (
 		<>
-			<div className="text-sm breadcrumbs">
+			<div className="breadcrumbs text-sm">
 				<ul>
 					<li>
 						<Link href="/settings">Einstellungen</Link>
@@ -18,7 +18,9 @@ export default function SettingsBreadcrumbs() {
 					{currentPage && <li>{currentPage?.name}</li>}
 				</ul>
 			</div>
-			{currentPage && <h1 className="mt-2 text-2xl font-bold">{currentPage?.name}</h1>}
+			{currentPage && (
+				<h1 className="mt-2 text-2xl font-bold">{currentPage?.name}</h1>
+			)}
 		</>
 	);
 }

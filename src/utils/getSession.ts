@@ -6,9 +6,7 @@ export default function getSession() {
 	const supabaseCookie = cookie.get("supabase-auth-token");
 
 	if (supabaseCookie) {
-		const jwt: string[] = JSON.parse(
-			supabaseCookie.value
-		);
+		const jwt: string[] = JSON.parse(supabaseCookie.value);
 
 		const token = jwt.at(0);
 		const tokenData: TJwt = JSON.parse(

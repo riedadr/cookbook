@@ -5,14 +5,14 @@ export default function ProfileFormLoading() {
 	return (
 		<>
 			<div className="mt-8">
-				<div className="flex justify-between items-baseline">
-					<span className="w-52 h-7 animate-pulse bg-neutral rounded"></span>
-					<span className="text-sm w-40 h-5 animate-pulse bg-neutral rounded"></span>
+				<div className="flex items-baseline justify-between">
+					<span className="h-7 w-52 animate-pulse rounded bg-neutral"></span>
+					<span className="h-5 w-40 animate-pulse rounded bg-neutral text-sm"></span>
 				</div>
-				<div className="flex gap-4 mt-4 items-end">
+				<div className="mt-4 flex items-end gap-4">
 					<div>
 						<div className="avatar pt-2">
-							<div className="w-32 h-32 rounded-full animate-pulse bg-neutral"></div>
+							<div className="h-32 w-32 animate-pulse rounded-full bg-neutral"></div>
 						</div>
 					</div>
 					<div className="w-full">
@@ -20,12 +20,12 @@ export default function ProfileFormLoading() {
 							<label className="label">
 								<span className="label-text">Name</span>
 							</label>
-							<div className="w-full h-12 bg-neutral animate-pulse rounded"></div>
+							<div className="h-12 w-full animate-pulse rounded bg-neutral"></div>
 							<label className="label">
 								<span className="label-text">Profilbild</span>
 							</label>
 							<div className="flex gap-4">
-								<div className="w-full h-12 bg-neutral animate-pulse rounded"></div>
+								<div className="h-12 w-full animate-pulse rounded bg-neutral"></div>
 
 								<button
 									className="btn"
@@ -38,9 +38,9 @@ export default function ProfileFormLoading() {
 						</div>
 					</div>
 				</div>
-				<div className="mt-8 w-full flex justify-end">
+				<div className="mt-8 flex w-full justify-end">
 					<button
-						className="btn btn-primary flex gap-2"
+						className="btn-primary btn flex gap-2"
 						type="submit"
 						disabled={true}
 					>

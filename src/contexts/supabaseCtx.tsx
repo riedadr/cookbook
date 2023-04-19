@@ -107,7 +107,15 @@ export default function SupabaseProvider({
 
 	return (
 		<Context.Provider
-			value={{ supabase, session, signIn, signOut, profile, setProfile, updateProfile }}
+			value={{
+				supabase,
+				session,
+				signIn,
+				signOut,
+				profile,
+				setProfile,
+				updateProfile,
+			}}
 		>
 			<>{children}</>
 		</Context.Provider>

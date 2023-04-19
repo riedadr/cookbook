@@ -10,7 +10,7 @@ export type TRecipe = {
 	file_url: string;
 	image_url: string;
 	course: "Vorspeise" | "Salat" | "Haupgericht" | "Süßspeise" | null;
-	tags: "string"
+	tags: "string";
 };
 
 export type TProfile = {

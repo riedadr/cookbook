@@ -15,33 +15,25 @@ type TThemeContext = {
 
 const Context = createContext<TThemeContext | undefined>(undefined);
 
-export default function ThemeProvider({
-	children,
-}: {
-	children: ReactNode;
-}) {
-
+export default function ThemeProvider({ children }: { children: ReactNode }) {
 	const [theme, setTheme] = useState<TThemeContext["theme"]>("dark");
 
 	const toggleTheme = () => {
-		const newTheme = (theme === "dark") ? "light" : "dark";
-		changeTheme(newTheme)
+		const newTheme = theme === "dark" ? "light" : "dark";
+		changeTheme(newTheme);
 	};
 
 	const changeTheme = (newTheme: "dark" | "light") => {
-		document.body.setAttribute("data-theme", newTheme)
-		localStorage.setItem("theme", newTheme)
-		setTheme(newTheme)
+		document.body.setAttribute("data-theme", newTheme);
+		localStorage.setItem("theme", newTheme);
+		setTheme(newTheme);
 	};
-
 
 	useEffect(() => {
 		if (typeof window !== "undefined") {
 			const clientTheme = localStorage.getItem("theme");
 			if (clientTheme) changeTheme(clientTheme as TThemeContext["theme"]);
 		}
-
-		
 	}, []);
 
 	return (

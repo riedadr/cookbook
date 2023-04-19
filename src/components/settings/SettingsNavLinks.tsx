@@ -6,12 +6,12 @@ import { useSupabase } from "@/contexts/supabaseCtx";
 
 export default function SettingsNavLinks() {
 	const path = usePathname();
-	const { session } = useSupabase()
+	const { session } = useSupabase();
 
 	return (
-		<ul className={`menu w-full rounded-box`}>
+		<ul className={`menu rounded-box w-full`}>
 			{settingPages.map((page) => {
-				const disabled = page.protected && !session
+				const disabled = page.protected && !session;
 				return (
 					<li key={page.name} className={disabled ? "hidden" : ""}>
 						<Link

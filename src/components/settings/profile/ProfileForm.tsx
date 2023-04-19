@@ -57,26 +57,26 @@ export default function ProfileForm({ profile }: { profile: TProfile }) {
 	}
 
 	useEffect(() => {
-		setProfile(profile)
-	}, [setProfile, profile])
+		setProfile(profile);
+	}, [setProfile, profile]);
 
 	return (
 		<>
 			<form className="mt-8" onSubmit={handleSubmit}>
-				<div className="flex justify-between items-baseline">
+				<div className="flex items-baseline justify-between">
 					<span className="text-lg font-bold">{profile.email}</span>
 					<span className="text-sm">
 						registriert am {registrationDateString}
 					</span>
 				</div>
-				<div className="flex gap-4 mt-4 items-end">
+				<div className="mt-4 flex items-end gap-4">
 					<div>
 						<Link
 							className="avatar pt-2"
 							href={avatarUrl}
 							target="_blank"
 						>
-							<div className="w-32 h-32 rounded-full">
+							<div className="h-32 w-32 rounded-full">
 								<Image
 									src={avatarUrl}
 									width={128}
@@ -98,7 +98,7 @@ export default function ProfileForm({ profile }: { profile: TProfile }) {
 								title="Erlaubte Zeichen: Buchstaben, Zahlen"
 								type="text"
 								placeholder="Anzeigename"
-								className="input input-bordered w-full"
+								className="input-bordered input w-full"
 								pattern="[A-Za-z0-9]+(\s[A-Za-z0-9]+)*"
 							/>
 							<label className="label">
@@ -111,7 +111,7 @@ export default function ProfileForm({ profile }: { profile: TProfile }) {
 									onChange={handleInput}
 									type="url"
 									placeholder="Profilbild-URL"
-									className="input input-bordered w-full"
+									className="input-bordered input w-full"
 								/>
 								<button
 									type="button"
@@ -126,9 +126,9 @@ export default function ProfileForm({ profile }: { profile: TProfile }) {
 						</div>
 					</div>
 				</div>
-				<div className="mt-8 w-full flex justify-end">
+				<div className="mt-8 flex w-full justify-end">
 					<button
-						className="btn btn-primary flex gap-2"
+						className="btn-primary btn flex gap-2"
 						type="submit"
 						disabled={profile == updatedProfile}
 					>

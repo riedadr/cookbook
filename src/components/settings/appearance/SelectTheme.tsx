@@ -6,7 +6,7 @@ function SelectTheme() {
 	const { theme, changeTheme } = useTheme();
 
 	const handleSelect = (e: ChangeEvent<HTMLSelectElement>) => {
-		changeTheme(e.target.value as "dark" | "light")
+		changeTheme(e.target.value as "dark" | "light");
 	};
 
 	return (

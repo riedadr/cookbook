@@ -11,7 +11,7 @@ function ToggleTheme() {
 			{theme === "light" ? (
 				<button
 					data-set-theme="dark"
-					className="btn btn-ghost h-16 w-16 rounded-none"
+					className="btn-ghost btn h-16 w-16 rounded-none"
 					title="dunkles Theme"
 					onClick={() => changeTheme("dark")}
 				>
@@ -20,7 +20,7 @@ function ToggleTheme() {
 			) : (
 				<button
 					data-set-theme="light"
-					className="btn btn-ghost h-16 w-16 rounded-none"
+					className="btn-ghost btn h-16 w-16 rounded-none"
 					title="helles Theme"
 					onClick={() => changeTheme("light")}
 				>

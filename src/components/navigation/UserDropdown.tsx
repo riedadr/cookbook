@@ -8,10 +8,10 @@ export default function UserDropdown() {
 	const { session, signIn, signOut, profile } = useSupabase();
 
 	return (
-		<div className="dropdown dropdown-end">
+		<div className="dropdown-end dropdown">
 			<label
 				tabIndex={0}
-				className="btn btn-ghost h-16 w-16 rounded-none avatar "
+				className="btn-ghost avatar btn h-16 w-16 rounded-none "
 			>
 				<div className="rounded-full">
 					{session && profile ? (
@@ -38,7 +38,7 @@ function LoggedInMenu({ action }: { action: VoidFunction }) {
 	return (
 		<ul
 			tabIndex={0}
-			className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+			className="dropdown-content menu rounded-box w-52 bg-base-100 p-2 shadow"
 		>
 			<li>
 				<NavLink icon={<IconUserCog />} href="/settings/profile">
@@ -50,9 +50,12 @@ function LoggedInMenu({ action }: { action: VoidFunction }) {
 					Meine Rezepte
 				</NavLink>
 			</li>
-			<hr className="my-2"/>
+			<hr className="my-2" />
 			<li>
-				<button className="btn btn-error btn-outline btn-md" onClick={action}>
+				<button
+					className="btn-outline btn-error btn-md btn"
+					onClick={action}
+				>
 					abmelden
 				</button>
 			</li>
@@ -64,11 +67,11 @@ function LoggedOutMenu({ action }: { action: VoidFunction }) {
 	return (
 		<ul
 			tabIndex={0}
-			className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+			className="dropdown-content menu rounded-box w-52 bg-base-100 p-2 shadow"
 		>
 			<li>
 				<button
-					className="btn btn-primary text-green-900"
+					className="btn-primary btn text-green-900"
 					onClick={action}
 				>
 					anmelden
