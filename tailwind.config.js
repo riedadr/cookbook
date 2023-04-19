@@ -12,6 +12,14 @@ module.exports = {
 				"gradient-conic":
 					"conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
 			},
+			gridTemplateColumns: {
+				"auto-fit": "repeat(auto-fit, minmax(200px, 1fr))",
+				"auto-fill": "repeat(auto-fill, minmax(200px, 1fr))",
+			  },
+			  gridTemplateRows: {
+				"auto-fit": "repeat(auto-fit, minmax(0, 1fr))",
+				"auto-fill": "repeat(auto-fill, minmax(0, 1fr))",
+			  }
 		},
 	},
 	plugins: [require("daisyui")],

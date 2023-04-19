@@ -1,4 +1,4 @@
-import RecipesList from "@/components/recipes/RecipesList";
+import RecipesList from "@/components/recipes/RecipeList";
 
 /**
  * Issue with async Server Components: https://beta.nextjs.org/docs/configuring/typescript#async-server-component-typescript-error

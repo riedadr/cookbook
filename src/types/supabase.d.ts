@@ -1,13 +1,16 @@
 import { Url } from "url";
 
 export type TRecipe = {
-	author: string | null;
-	content: string;
-	created_at: string;
-	description: string | null;
 	recipe_id: string;
-	title: string;
+	author: string | null;
+	created_at: string;
 	updated_at: string;
+	title: string;
+	description: string | null;
+	file_url: string;
+	image_url: string;
+	course: "Vorspeise" | "Salat" | "Haupgericht" | "Süßspeise" | null;
+	tags: "string"
 };
 
 export type TProfile = {
@@ -16,6 +19,7 @@ export type TProfile = {
 	email: string;
 	avatar: string;
 	name: string;
+	user_name: string;
 };
 
 export type TJwt = {
