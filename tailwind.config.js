@@ -16,14 +16,14 @@ module.exports = {
 			gridTemplateColumns: {
 				"auto-fit": "repeat(auto-fit, minmax(200px, 1fr))",
 				"auto-fill": "repeat(auto-fill, minmax(200px, 1fr))",
-			  },
-			  gridTemplateRows: {
+			},
+			gridTemplateRows: {
 				"auto-fit": "repeat(auto-fit, minmax(0, 1fr))",
 				"auto-fill": "repeat(auto-fill, minmax(0, 1fr))",
-			  }
+			}
 		},
 	},
-	plugins: [require("daisyui")],
+	plugins: [require("@tailwindcss/typography"), require("daisyui")],
 	daisyui: {
 		themes: [
 			{

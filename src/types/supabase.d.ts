@@ -2,7 +2,7 @@ import { Url } from "url";
 
 export type TRecipe = {
 	recipe_id: string;
-	author: string | null;
+	author_id: string | null;
 	created_at: string;
 	updated_at: string;
 	title: string;
