@@ -1,3 +1,5 @@
+import RecipeTitleCard from "@/components/recipe/RecipeTitleCard";
+import RecipeContent from "@/components/recipe/RecipeContent";
 import { type TRecipeDetails } from "@/types/supabase";
 import { createServerComponentSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { PostgrestError } from "@supabase/supabase-js";
@@ -29,7 +31,6 @@ async function RecipePage({
 }: {
 	params: { user_name: string; recipe_title: string };
 }) {
-	let recipeContent = "Rezept wird geladen ...";
 	const supabase = createServerComponentSupabaseClient({
 		headers,
 		cookies,
@@ -42,33 +43,22 @@ async function RecipePage({
 	const recipe = recipes.at(0);
 
 	if (error) console.log(error);
-	else console.log(recipes);
-
-	if (recipe) {
-		const url = recipe.file_url;
-		const recipeFile = await fetch(url);
-		recipeContent = await recipeFile.text();
-	}
 
 	return (
 		<>
 			{recipe ? (
-				<h1>
-					Rezept {recipe?.title} von {params.user_name}
-				</h1>
+				<>
+					{/* @ts-expect-error Async Server Component */}
+					<RecipeTitleCard recipe={recipe} />
+					<hr className="my-4 opacity-0" />
+					{/* @ts-expect-error Async Server Component */}
+					<RecipeContent fileUrl={recipe.file_url} />
+				</>
 			) : (
 				<section className="mt-10 flex flex-col items-center font-bold text-error">
 					<IconError404 size={32} />
 					<p>Rezept wurde nicht gefunden</p>
 				</section>
-			)}
-
-			{recipe && (
-				<article className="prose">
-					<ReactMarkdown remarkPlugins={[remarkGfm]}>
-						{recipeContent}
-					</ReactMarkdown>
-				</article>
 			)}
 		</>
 	);

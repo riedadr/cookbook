@@ -10,3 +10,12 @@
 	min-height: calc(100vh - 64.67px - 2 * 1rem);
 	/* 100vh - header - main.padding*/
 }
+
+article.prose h1,
+article.prose h2,
+article.prose h3,
+article.prose h4,
+article.prose h5,
+article.prose h6 {
+	margin-bottom: 0;
+}
