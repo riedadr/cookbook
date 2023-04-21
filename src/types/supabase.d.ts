@@ -13,6 +13,12 @@ export type TRecipe = {
 	tags: "string";
 };
 
+export type TRecipeDetails = TRecipe & {
+	author_user_name: string;
+	author_name: string;
+	author_avatar: string;
+};
+
 export type TProfile = {
 	profile_id: string;
 	created_at: string;
